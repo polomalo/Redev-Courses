@@ -1,19 +1,20 @@
 import './App.css'
 
-function Num(props) {
-  return <h1>Number: {props.number}</h1>
+function Num({number}) {
+  return <h1>Number: {number}</h1>
 }
 
-function Str(props) {
-  return <h1>String: {props.string}</h1>
+function Str({string}) {
+  return <h1>String: {string}</h1>
 }
 
-function Boolean(props) {
-  return <h1>Boolean: {props.boolean ? 'true' : 'false'}</h1>
+function Boolean({boolean}) {
+  return <h1>Boolean: {boolean ? 'true' : 'false'}</h1>
 }
 
 function Obj(props) {
-  return <h1>Object:<br/> First name - {props.obj.firstName}<br/> Last name - {props.obj.lastName}</h1>
+  const {firstName, lastName} = props.obj
+  return <h1>Object:<br/> First name - {firstName}<br/> Last name - {lastName}</h1>
 }
 
 function Func(props) {
