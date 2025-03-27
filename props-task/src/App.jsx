@@ -1,14 +1,13 @@
 import './App.css'
-import React, { useState, useEffect, Component } from 'react'
-import ParentComponent from './components/ParentComponent.jsx'
+import React from 'react'
+import LifecycleComponent from './components/ClassComponent.jsx'
+import FuncComponent from './components/FuncComponent.jsx'
 
 function App() {
   return (
     <>
-      {/* <IncreaseCount />
-      <HideText />
-      <ChangeColorText /> */}
-      <ParentComponent />
+      <LifecycleComponent />
+      <FuncComponent />
     </>
   )
 }
