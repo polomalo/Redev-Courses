@@ -8,6 +8,7 @@ const LifecycleComponentFunc = () => {
     error: null,
   })
   const [count, setCount] = useState(0)
+  const [prevCount, setPrevCount] = useState(0)
 
   const increment = () => {
     setCount(count => count + 1)
@@ -31,6 +32,16 @@ const LifecycleComponentFunc = () => {
       })
     }
   }
+
+  useEffect(() => {
+    setPrevCount(count)
+  }, [count])
+
+  useEffect(() => {
+    if (prevCount !== count) {
+      console.log(`Count update: ${prevCount} -> ${count}`)
+    }
+  }, [count, prevCount])
 
   useEffect(() => {
     getAPI()
