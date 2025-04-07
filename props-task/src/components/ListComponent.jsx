@@ -3,10 +3,10 @@ import React from 'react'
 const List = ({ items, onModifyItem }) => {
   return (
     <ul>
-      {items.map((item, index) => (
-        <li key={index}>
-          {item}
-          <button onClick={() => onModifyItem(index)}>Modify</button>
+      {items.map(({ id, title }) => (
+        <li key={id}>
+          {title}
+          <button onClick={() => onModifyItem(id)}>Modify</button>
         </li>
       ))}
     </ul>

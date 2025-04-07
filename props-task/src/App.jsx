@@ -3,7 +3,11 @@ import React, { useState, useEffect, useRef } from 'react'
 import ListComponent from './components/ListComponent.jsx'
 
 function App() {
-  const [items, setItems] = useState(['First', 'Second', 'Third'])
+  const [items, setItems] = useState([
+    { id: 1, title: 'First' },
+    { id: 2, title: 'Second' },
+    { id: 3, title: 'Third' },
+  ])
 
   const [inputValue, setInputValue] = useState('')
   const inputRef = useRef(null)
@@ -14,7 +18,10 @@ function App() {
 
   const handleAddItem = () => {
     if (inputValue.trim()) {
-      setItems([...items, inputValue])
+      setItems([
+        ...items,
+        { id: items[items.length - 1].id + 1, title: inputValue },
+      ])
       setInputValue('')
     }
   }
@@ -25,10 +32,10 @@ function App() {
     }
   }
 
-  const handleModifyItem = index => {
-    const newItems = [...items]
-    newItems[index] = `!!!${newItems[index]}`
-    setItems(newItems)
+  const handleModifyItem = id => {
+    setItems(
+      items.map(el => (el.id === id ? { ...el, title: `!!!${el.title}` } : el))
+    )
   }
 
   return (
