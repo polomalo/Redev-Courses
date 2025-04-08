@@ -1,7 +1,6 @@
 import React from 'react'
 
 const SearchInput = React.memo(({ inputValue, onChange }) => {
-  console.log('Search')
   return (
     <>
       <div>

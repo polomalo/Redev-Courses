@@ -7,7 +7,6 @@ const ItemList = ({ items, searchValue }) => {
         title.toString().toLowerCase() === searchValue.toLowerCase()
     )
   }, [items, searchValue])
-  console.log('List')
   return (
     <>
       <h2>List of items</h2>

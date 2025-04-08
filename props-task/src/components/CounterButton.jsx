@@ -1,7 +1,6 @@
 import React from 'react'
 
-const CounterButton = React.memo(({ count, increaseCount }) => {
-  console.log('CounterBtn')
+const CounterButton = React.memo(({ increaseCount }) => {
   return (
     <>
       <div>
