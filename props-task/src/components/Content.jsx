@@ -15,11 +15,13 @@ import Routers from '../pages/Routers'
 import Form from '../pages/Form'
 import Storages from '../pages/Storages'
 import Hoc from '../pages/Hoc'
+import Home from '../pages/Home'
 
 const Content = () => {
   return (
     <Routes>
-      {/* <Route path="/" element={<Home />} /> */}
+      <Route path="/" element={<Home to="/home" replace />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/reactInfo" element={<ReactInfo />} />
       <Route path="/beginning" element={<Beginning />} />
       <Route path="/projectStructure" element={<ProjectStructure />} />

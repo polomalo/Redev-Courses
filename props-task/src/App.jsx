@@ -1,28 +1,33 @@
 import './App.css'
-import React from 'react'
-import RegistrationForm from './components/RegistrationForm.jsx'
-import { Box, Container, CssBaseline, Grid, Stack } from '@mui/material'
+import React, { useState } from 'react'
+import { Grid } from '@mui/material'
 import Header from './components/Header.jsx'
 import Navigation from './components/Navigation.jsx'
 import Content from './components/Content.jsx'
-import Footer from './components/Footer.jsx'
+import { ActiveContext } from './contexts/ActiveContext'
 
 function App() {
+  const [activeId, setActiveId] = useState('home')
   return (
-    <>
-      <div className="app-container">
-        <Header />
-        <Grid container spacing={2}>
-          <Grid size={4} border={2}>
-            <Navigation />
+    <ActiveContext.Provider value={{ activeId, setActiveId }}>
+      <section className="app-container">
+        <header className="app-header">
+          <Header />
+        </header>
+        <main className="app-main">
+          <Grid container spacing={2} height={'100%'}>
+            <Grid size={3} className="app-nav" height={'100%'}>
+              <Navigation />
+            </Grid>
+            <Grid size={9} height={'100%'}>
+              <div className="app-main-content">
+                <Content />
+              </div>
+            </Grid>
           </Grid>
-          <Grid size={8}>
-            <Content />
-          </Grid>
-        </Grid>
-        <Footer />
-      </div>
-    </>
+        </main>
+      </section>
+    </ActiveContext.Provider>
   )
 }
 

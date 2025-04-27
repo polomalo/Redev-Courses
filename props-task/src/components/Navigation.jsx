@@ -1,11 +1,14 @@
-import { Stack } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router'
+import './NavStyles.css'
+import classNames from 'classnames'
+import { ActiveContext } from '../contexts/ActiveContext'
 
 const Navigation = () => {
+  const { activeId, setActiveId } = useContext(ActiveContext)
   const navLinks = [
-    { id: 1, title: 'Реакт - это...', link: 'reactInfo' },
-    { id: 2, title: 'С чего начать?', link: 'beginning' },
+    { id: 1, title: 'С чего начать?', link: 'beginning' },
+    { id: 2, title: 'Реакт - это...', link: 'reactInfo' },
     { id: 3, title: 'Структура проекта', link: 'projectStructure' },
     { id: 4, title: 'Введение в VirtualDOM', link: 'virtualDOM' },
     { id: 5, title: 'Components', link: 'components' },
@@ -21,11 +24,16 @@ const Navigation = () => {
     { id: 15, title: 'HOC', link: 'hoc' },
   ]
   return (
-    <ul className="app-nav">
+    <ul>
       {navLinks.map(({ id, title, link }) => (
-        <li key={id}>
-          <Link to={`/${link}`}>{title}</Link>
-        </li>
+        <Link
+          key={id}
+          to={`/${link}`}
+          className={classNames('nav-link', activeId === id ? 'active' : '')}
+          onClick={() => setActiveId(id)}
+        >
+          <li key={id}>{title}</li>
+        </Link>
       ))}
     </ul>
   )
